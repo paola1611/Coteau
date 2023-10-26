@@ -1,0 +1,25 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>universidades</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="stacked">Nombre del país (en inglés):</ion-label>
+    <ion-input [(ngModel)]="country" type="text"></ion-input>
+  </ion-item>
+  <ion-button (click)="getUniversities()">Obtener Universidades</ion-button>
+
+  <ion-list *ngIf="universities">
+    <ion-item *ngFor="let university of universities">
+      <ion-label>{{ university.name }}</ion-label>
+      <br><br>
+      <ion-label>{{ university.domains[0] }}</ion-label>
+      <a [href]="university.web_pages[0]" target="_blank">{{ university.web_pages[0] }}</a>
+    </ion-item>
+  </ion-list>
+</ion-content>
