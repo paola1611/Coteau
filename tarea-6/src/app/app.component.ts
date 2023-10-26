@@ -9,7 +9,7 @@ export class AppComponent {
     { title: 'Inhobox', url: '/nombre-genero', icon: 'home' },
     { title: 'Outbox', url: '/nombre-edad', icon: 'paper-plane' },
     { title: 'Favorites', url: '/universidades', icon: 'heart' },
-    { title: 'Archived', url: '/folder/archived', icon: 'archive' },
+    { title: 'Archived', url: '/clima', icon: 'archive' },
     { title: 'Trash', url: '/folder/trash', icon: 'trash' },
     { title: 'Spam', url: '/folder/spam', icon: 'warning' },
   ];

@@ -22,6 +22,10 @@ const routes: Routes = [
   {
     path: 'universidades',
     loadChildren: () => import('./universidades/universidades.module').then( m => m.UniversidadesPageModule)
+  },
+  {
+    path: 'clima',
+    loadChildren: () => import('./clima/clima.module').then( m => m.ClimaPageModule)
   }
 ];
 
