@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>universidades</ion-title>
+    <ion-title>Universidades</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -12,7 +12,7 @@
     <ion-label position="stacked">Nombre del país (en inglés):</ion-label>
     <ion-input [(ngModel)]="country" type="text"></ion-input>
   </ion-item>
-  <ion-button (click)="getUniversities()">Obtener Universidades</ion-button>
+  <ion-button (click)="getUniversities()" expand="block">Obtener Universidades</ion-button>
 
   <ion-list *ngIf="universities">
     <ion-item *ngFor="let university of universities">

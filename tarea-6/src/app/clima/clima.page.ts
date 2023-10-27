@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { WeatherService } from '../weather.service';
 
 @Component({
@@ -11,20 +12,27 @@ export class ClimaPage implements OnInit {
   ngOnInit() {
   }
 
-  weatherData: any;
+  selectedProvince: string = 'Santo Domingo';
+  climaData: any;
 
-  async getWeather() {
-    try {
-      const latitude =  18.5001200; // Reemplaza con la latitud deseada
-      const longitude =  -69.9885700; // Reemplaza con la longitud deseada
-      const response = await fetch(`https://open-meteo.com/v1/forecast?forecast=7&latitude=${latitude}&longitude=${longitude}&current_weather=true`);
-      if (response.ok) {
-        this.weatherData = await response.json();
-      } else {
-        console.error('Error al obtener datos del clima.');
-      }
-    } catch (error) {
-      console.error('Error al obtener datos del clima.', error);
+  constructor(private http: HttpClient) {}
+
+  fetchWeatherData() {
+    const province = this.selectedProvince;
+
+    if (province) {
+      const apiUrl = `https://api.weatherapi.com/v1/current.json?key=4ed03e53105e49c895491653232610&q=${province}`;
+      this.http.get(apiUrl).subscribe((data: any) => {
+        this.climaData = {
+          location: data.location.name,
+          localtime: data.location.localtime,
+          condition: data.current.condition.text,
+          tempC: data.current.temp_c,
+          windKph: data.current.wind_kph,
+          humidity: data.current.humidity,
+        };
+      });
     }
   }
 }
+

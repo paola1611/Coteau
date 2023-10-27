@@ -26,6 +26,14 @@ const routes: Routes = [
   {
     path: 'clima',
     loadChildren: () => import('./clima/clima.module').then( m => m.ClimaPageModule)
+  },
+  {
+    path: 'inicio',
+    loadChildren: () => import('./inicio/inicio.module').then( m => m.InicioPageModule)
+  },
+  {
+    path: 'wordpress',
+    loadChildren: () => import('./wordpress/wordpress.module').then( m => m.WordpressPageModule)
   }
 ];
 

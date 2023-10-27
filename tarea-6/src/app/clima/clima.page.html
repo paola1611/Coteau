@@ -1,34 +1,50 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>clima</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-header>
-  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
     <ion-title>
       Clima Actual
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
+
 <ion-content>
-  <ion-list>
-    <ion-item>
-      <ion-label position="stacked">Ciudad:</ion-label>
+  <ion-item>
+    <ion-title>Provincias</ion-title>
+    <ion-select [(ngModel)]="selectedProvince" name="selectedProvince">
+      <ion-select-option value="Azua">Azua</ion-select-option>
+      <ion-select-option value="Baoruco">Baoruco</ion-select-option>
+      <ion-select-option value="Barahona">Barahona</ion-select-option>
+      <ion-select-option value="Dajabón">Dajabón</ion-select-option>
+      <ion-select-option value="Distrito Nacional">Distrito Nacional</ion-select-option>
+      <ion-select-option value="Duarte">Duarte</ion-select-option>
+      <ion-select-option value="Elías Piña">Elías Piña</ion-select-option>
+      <ion-select-option value="El Seibo">El Seibo</ion-select-option>
+      <ion-select-option value="Espaillat">Espaillat</ion-select-option>
+      <ion-select-option value="Hato Mayor">Hato Mayor</ion-select-option>
+      <ion-select-option value="Hermanas Mirabal">Hermanas Mirabal</ion-select-option>
+      <ion-select-option value="Independencia">Independencia</ion-select-option>
+      <ion-select-option value="La Altagracia">La Altagracia</ion-select-option>
+      <ion-select-option value="La Romana">La Romana</ion-select-option>
+      <ion-select-option value="La Vega">La Vega</ion-select-option>
+      <!-- Agrega más provincias aquí -->
+    </ion-select>
+  </ion-item>
+  <ion-button (click)="fetchWeatherData()" expand="block">Obtener Clima</ion-button>
 
-    </ion-item>
-  </ion-list>
-  <ion-button (click)="getWeather()">Obtener Clima</ion-button>
-
-  <ion-card *ngIf="weatherData">
+  <ion-card *ngIf="climaData">
     <ion-card-header>
-      {{ weatherData.name }}
+      Clima Actual en {{ climaData.location }}
     </ion-card-header>
     <ion-card-content>
-      Temperatura: {{ weatherData.main.temp }}°C
-      <br>
-      Clima: {{ weatherData.weather[0].description }}
+      <p>Condición: {{ climaData.condition }}</p>
+      <p>Tiempo: {{ climaData.localtime }}</p>
+      <p>Temperatura (°C): {{ climaData.tempC }}</p>
+      <p>Temperatura (°f): {{ climaData.tempF }}</p>
+      <p>Viento (km/h): {{ climaData.windKph }}</p>
+      <p>Humedad: {{ climaData.humidity }}</p>
     </ion-card-content>
   </ion-card>
 </ion-content>

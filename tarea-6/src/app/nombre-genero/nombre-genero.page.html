@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>nombre-genero</ion-title>
+    <ion-title>Genero</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -12,7 +12,7 @@
     <ion-label position="stacked">Nombre:</ion-label>
     <ion-input [(ngModel)]="name" type="text"></ion-input>
   </ion-item>
-  <ion-button (click)="predictGender()">Predecir Género</ion-button>
+  <ion-button (click)="predictGender()" expand="block">Predecir Género</ion-button>
 
   <ion-card *ngIf="prediction">
     <ion-card-header>
